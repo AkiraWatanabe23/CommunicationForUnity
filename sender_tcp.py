@@ -1,7 +1,10 @@
 '''TCP送信側'''
 import socket
 import os
+import time
 import keyboard
+
+times = []
 
 HOST = '127.0.0.1'
 MAINPORT = 50007
@@ -19,6 +22,11 @@ def connect_unity():
     client.connect((HOST, MAINPORT))
 
     client.send(result.encode('utf-8'))
+
+    send_time = time.time_ns()
+
+    times.append(send_time)
+    print(send_time)
 
     data = client.recv(200)
 
