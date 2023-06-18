@@ -4,8 +4,6 @@ import random
 import time
 import keyboard
 
-times = []
-
 HOST = '127.0.0.1'
 PORT = 50007
 
@@ -20,7 +18,6 @@ while True:
     #print(n)
 
     send_time = time.time_ns()
-    times.append(send_time)
     print(send_time)
 
     client.sendto(result.encode('utf-8'), (HOST, PORT))

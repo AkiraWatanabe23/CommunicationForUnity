@@ -4,8 +4,6 @@ import os
 import time
 import keyboard
 
-times = []
-
 HOST = '127.0.0.1'
 MAINPORT = 50007
 
@@ -25,7 +23,6 @@ def connect_unity():
 
     send_time = time.time_ns()
 
-    times.append(send_time)
     print(send_time)
 
     data = client.recv(200)
@@ -33,7 +30,6 @@ def connect_unity():
     print(data.decode('utf-8'))
 
     return client
-
 
 while True:
     connect_unity()
