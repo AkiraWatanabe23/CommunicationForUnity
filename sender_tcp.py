@@ -1,4 +1,4 @@
-'''TCP送信側'''
+'''送信側(TCP)'''
 import socket
 import os
 import time
@@ -6,6 +6,8 @@ import keyboard
 
 HOST = '127.0.0.1'
 MAINPORT = 50007
+
+SEND_TIME = 0
 
 def connect_unity():
     '''Unityにデータを送る'''
@@ -21,15 +23,22 @@ def connect_unity():
 
     client.send(result.encode('utf-8'))
 
-    send_time = time.time_ns()
-
-    print(send_time)
+    print(calculation(time.time_ns()))
 
     data = client.recv(200)
 
     print(data.decode('utf-8'))
 
     return client
+
+def calculation(num):
+    '''遅延時間の計算'''
+    global SEND_TIME
+
+    diff = SEND_TIME - num
+    SEND_TIME = diff
+
+    return diff
 
 while True:
     connect_unity()
