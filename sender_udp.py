@@ -14,11 +14,13 @@ while True:
         break
 
     n = random.randrange(3)
-    result = str(n)
+    #result = str(n)
     #print(n)
 
     send_time = time.time_ns()
     print(send_time)
 
-    client.sendto(result.encode('utf-8'), (HOST, PORT))
+    #client.sendto(result.encode('utf-8'), (HOST, PORT))
+
+    client.sendto(str(send_time).encode('utf-8'), (HOST, PORT))
     time.sleep(2.0)

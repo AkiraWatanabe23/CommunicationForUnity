@@ -16,12 +16,13 @@ def connect_unity():
     if keyboard.is_pressed('s'):
         client.close()
 
-    result = str(os.getpid())
+    #result = str(os.getpid())
     print(os.getpid())
 
     client.connect((HOST, MAINPORT))
 
-    client.send(result.encode('utf-8'))
+    #client.send(result.encode('utf-8'))
+    client.send(str(time.time_ns()).encode('utf-8'))
 
     print(time.time_ns())
 
