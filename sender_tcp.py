@@ -7,8 +7,6 @@ import keyboard
 HOST = '127.0.0.1'
 MAINPORT = 50007
 
-SEND_TIME = 0
-
 def connect_unity():
     '''Unityにデータを送る'''
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -19,8 +17,10 @@ def connect_unity():
     #result = str(os.getpid())
     print(os.getpid())
 
+    #Unityに接続
     client.connect((HOST, MAINPORT))
 
+    #データを送信する
     #client.send(result.encode('utf-8'))
     client.send(str(time.time_ns()).encode('utf-8'))
 
