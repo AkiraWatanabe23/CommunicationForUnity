@@ -1,4 +1,4 @@
-'''送信側(UDP)'''
+'''送信側(UDP) ... 送信時のエポック秒を送信する'''
 import socket
 import random
 import time
