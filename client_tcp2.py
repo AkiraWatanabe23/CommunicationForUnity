@@ -6,7 +6,7 @@ HOST = '127.0.0.1'
 PORT = 50007
 
 class Client:
-    '''流れを自分でクラスにしてみる'''
+    '''クライアントの動き'''
     def __init__(self):
         self.client = None
 
@@ -36,24 +36,3 @@ while True:
     instance.receive_data()
 
     time.sleep(2.0)
-
-# def data_client():
-#     '''クライアントの働きをする'''
-#     #接続
-#     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-#     client.connect((HOST, PORT))
-#     print('Connected to server. IP:', HOST, 'Port:', PORT)
-
-#     #送信
-#     data_to_send = str(time.time_ns())
-#     client.sendall(data_to_send.encode('utf-8'))
-
-#     #応答を受け取る
-#     received_data = client.recv(1024).decode('utf-8')
-#     print('Received data:', received_data)
-
-#     client.close()
-#     time.sleep(2.0)
-
-# while True:
-#     data_client()
