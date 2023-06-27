@@ -1,21 +1,29 @@
 '''受信側'''
 import socket
+import keyboard
 
-PORT = 3123
+HOST = '127.0.0.1'
+PORT = 50007
 
-servsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server_socket.bind((HOST, PORT))
+server_socket.listen(1)
 
-servsock.bind((socket.gethostname(), PORT))
+print("Server started. Please waiting for connections...")
 
-servsock.listen()
+if keyboard.is_pressed('s'):
+    server_socket.close()
 
 while True:
-    print("accept...")
-    clisock, addr = servsock.accept()
+    client_socket, client_address = server_socket.accept()
+    print("Client connected:", client_address)
 
-    data = clisock.recv(1024)
-    print(data)
+    while True:
+        data = client_socket.recv(1024).decode('utf-8')
+        if not data:
+            break
 
-    clisock.send(b'ok')
+        print(data)
 
-    clisock.close()
+    print("closeします")
+    client_socket.close()

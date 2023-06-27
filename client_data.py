@@ -1,4 +1,4 @@
-'''クライアント'''
+'''Unityからデータを受け取ってみる'''
 import socket
 import time
 
@@ -6,7 +6,7 @@ HOST = '127.0.0.1'
 PORT = 50007
 
 class Client:
-    '''クライアントの動き'''
+    '''クライアント（データの送受信）'''
     def __init__(self):
         self.client = None
 
@@ -15,8 +15,6 @@ class Client:
 
     def connect(self):
         '''接続処理'''
-        # socket.AF_INET ... IPv4インターネットプロトコルを使用する際の定数
-        # socket.SOCK_STREAM ... ソケットタイプの指定（TCPなので、SOCK_STREAM）
         self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.client.connect((HOST, PORT))
         print('Connected to server. IP:', HOST, 'Port:', PORT)
